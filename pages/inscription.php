@@ -8,8 +8,8 @@ require_once '../class/Database.php'; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/connexion.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/styleConnexion.css">
+    <link rel="stylesheet" href="../styles/styleNavbar.css">
     <title>Inscription</title>
 </head>
 
