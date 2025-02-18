@@ -21,7 +21,21 @@ class Connexion extends Database
         if ($user) {
             // Vérification du mot de passe
             if (password_verify($password, $user['password'])) {
-                return ['success' => "Connexion réussie !"];
+                // Démarrer une session et stocker les informations de l'utilisateur
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
+
+                // Redirection selon le rôle
+                if ($user['role'] === 'admin') {
+                    header("Location: pages/admin_dashboard.php");
+                } elseif ($user['role'] === 'user') {
+                    header("Location: pages/profil.php");
+                } else {
+                    return ['error' => "Rôle inconnu. Contactez l'administrateur."];
+                }
+                exit();
             } else {
                 return ['error' => "Mot de passe incorrect."];
             }

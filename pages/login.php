@@ -3,6 +3,16 @@ require_once '../includes/navbar.php';
 require_once '../class/Database.php';
 
 session_start();
+if (isset($_SESSION['user_id'])) {
+    if ($_SESSION['role'] === 'admin') {
+        header("Location: /pages/admin_dashboard.php");
+        exit();
+    } elseif ($_SESSION['role'] === 'user') {
+        header("Location: /pages/profil.php");
+        exit();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +41,6 @@ session_start();
             </form>
         </section>
     </section>
-
-    <?php if (isset($_SESSION['username'])): ?>
-        <p class="success">Bonjour <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
-    <?php endif; ?>
 </body>
 
 </html>

@@ -35,7 +35,6 @@ class Database
             $stmt->bindParam(':username', $adminUsername);
             $stmt->bindParam(':password', $hashedPassword);
             $stmt->execute();
-
             echo "Administrateur par défaut créé.<br>";
         }
     }

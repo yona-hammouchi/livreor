@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
     header("Location: profil.php");
-    exit;
+    exit();
 }
 ?>
 
@@ -16,9 +16,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <h1>Bienvenue sur votre profil, <?php echo htmlspecialchars($_SESSION['username']); ?> !</h1>
-
-    <p>C'est votre espace personnel.</p>
+    <h1>Bienvenue sur votre profil, <?php echo "Bienvenue sur votre profil, " . $_SESSION['username'] . " !"; ?></h1>
 
     <form method="POST">
         <label>Nom d'utilisateur :</label>
