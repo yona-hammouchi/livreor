@@ -21,9 +21,9 @@ nav{
     list-style: none;
 }
 
-.logo{
+.logo a{
     text-decoration: none;
-    list-style: none;
+    color: black;
 }
 nav h1{
     font-size: 45px;
@@ -31,6 +31,7 @@ nav h1{
     font-family: "Great Vibes", serif;
     font-weight: 400;
     font-style: normal;
+    
 }
 
 nav ul{
@@ -81,8 +82,10 @@ nav ul{
 .gallery{
     list-style: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 3em;
+    
 }
-.middlepage{
-    width: 100%;
-}
+
+
