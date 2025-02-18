@@ -1,20 +1,8 @@
 <?php
-session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/Connexion.php';
 
-$connexion = new Connexion();
-$result = null;
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $result = $connexion->handleLogin($_POST);
-    if (isset($result['success'])) {
-        $_SESSION['username'] = $_POST['username']; // Stocke le nom d'utilisateur
-        header("Location: profil.php"); // Redirige vers la page profil
-        exit;
-    }
-}
+session_start();
 ?>
 
 <!DOCTYPE html>

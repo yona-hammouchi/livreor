@@ -37,11 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <section class="container_forms">
             <p>Inscrivez-vous et partagez un message pour célébrer ce moment spécial.</p>
             <form action="inscription.php" method="POST">
-                <label>Rôle :</label>
-                <select name="role">
-                    <option value="user">Utilisateur</option>
-                    <option value="admin">Administrateur</option>
-                </select>
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Mot de passe :</label>
