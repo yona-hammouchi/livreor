@@ -80,6 +80,10 @@
     </div>
 
 </section>
+    <span>
+        <h1> N'hésitez pas à nous laissez un petit message sur le livre d'or </h1>
+    <span>
+    <a href="./pages/inscription.php"><img class = "register_button"src="./assets/button_register.png" alt="img"></a>
 </main>
 <footer>
 </footer>
