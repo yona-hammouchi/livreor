@@ -13,12 +13,12 @@
 <header>
     <nav>
         <div class="logo">
-            <a href="/index.php"><h1>Au Coeur de la Vie</h1> </a>
+            <a href="./index.php"><h1>Au Coeur de la Vie</h1> </a>
         </div>
         <ul>
-            <li><a href="#"></a>Acceuil</li>
-            <li><a href="#"></a>Inscription</li>
-            <li><a href="#"></a>Connexion</li>
+            <li><a href="./index.php">Acceuil</a></li>
+            <li><a href="./pages/inscription.php">Inscription</a></li>
+            <li><a href="./pages/login.php">Connexion</a></li>
         </ul>
     </nav>
 </header>
