@@ -29,9 +29,9 @@ class Connexion extends Database
 
                 // Redirection selon le rôle
                 if ($user['role'] === 'admin') {
-                    header("Location: pages/admin_dashboard.php");
+                    header("Location: admin_dashboard.php");
                 } elseif ($user['role'] === 'user') {
-                    header("Location: pages/profil.php");
+                    header("Location: profil.php");
                 } else {
                     return ['error' => "Rôle inconnu. Contactez l'administrateur."];
                 }

@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/navbar.php';
 session_start();
 if (!isset($_SESSION)) {
     die("Les sessions ne fonctionnent pas !");

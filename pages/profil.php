@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/navbar.php';
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
     header("Location: profil.php");
@@ -31,9 +32,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
 
     <form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
         <button type="submit" name="delete" style="background-color: red; color: white;">Supprimer mon compte</button>
-    </form>ettre à jour</button>
+    </form>
 </body>
 
 </html>
-
-?>

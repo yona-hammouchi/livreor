@@ -1,18 +1,18 @@
 <?php
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
+require_once '../class/connexion.php';
 
 session_start();
-if (isset($_SESSION['user_id'])) {
-    if ($_SESSION['role'] === 'admin') {
-        header("Location: /pages/admin_dashboard.php");
-        exit();
-    } elseif ($_SESSION['role'] === 'user') {
-        header("Location: /pages/profil.php");
-        exit();
+
+$error = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $connexion = new Connexion();
+    $result = $connexion->handleLogin($_POST);
+    if (isset($result['error'])) {
+        $error = $result['error'];
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,14 @@ if (isset($_SESSION['user_id'])) {
     <section class="containers_head_forms">
         <section class="container_forms">
             <p>Veuillez entrer vos informations pour vous connecter.</p>
-            <form action="login.php" method="POST">
+
+            <!-- Affichage des erreurs -->
+            <?php if ($error): ?>
+                <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
+
+            <!-- Formulaire de connexion -->
+            <form action="" method="POST">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required><br><br>
 
