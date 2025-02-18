@@ -75,17 +75,17 @@ nav ul{
     text-align: center;
 }
 
-.gallery img{
-    width: 366px;   
+.grid img{
+    width: 100%;
 }
 
 .gallery{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3em;
-    
+    column-count: 3;
+    gap: 5px;
+    padding-top: 50px;
 }
 
+.middlepage{
+    padding-top: 100px;
+}
 
