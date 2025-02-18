@@ -1,9 +1,5 @@
-<?php
-require_once '../class/connexion.php';
-require_once '../class/Database.php'; ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +13,6 @@ require_once '../class/Database.php'; ?>
     <?php require_once '../includes/navbar.php'; ?>
     <section class="containers_head_forms">
         <section class="container_forms">
-            <h1>Bienvenue au monde, petit trésor !</h1>
             <p>Inscrivez-vous et partagez un message pour célébrer ce moment spécial.</p>
             <form action="inscription.php" method="POST">
                 <label for="username">Nom d'utilisateur :</label>
@@ -39,6 +34,5 @@ require_once '../class/Database.php'; ?>
         </section>
     </section>
 </body>
-
 
 </html>
