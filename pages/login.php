@@ -1,3 +1,22 @@
+<?php
+session_start();
+require_once '../includes/navbar.php';
+require_once '../class/Database.php';
+require_once '../class/Connexion.php';
+
+$connexion = new Connexion();
+$result = null;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $result = $connexion->handleLogin($_POST);
+    if (isset($result['success'])) {
+        $_SESSION['username'] = $_POST['username']; // Stocke le nom d'utilisateur
+        header("Location: profil.php"); // Redirige vers la page profil
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,16 +29,10 @@
 </head>
 
 <body>
-    <?php require_once '../includes/navbar.php'; ?>
-    <?php if (!empty($error)) : ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
-
     <section class="containers_head_forms">
         <section class="container_forms">
-            <h1>Bienvenue au monde, petit trésor !</h1>
             <p>Veuillez entrer vos informations pour vous connecter.</p>
-            <form action="Database.php" method="POST">
+            <form action="login.php" method="POST">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required><br><br>
 
@@ -28,15 +41,12 @@
 
                 <button type="submit">Se connecter</button>
             </form>
-            <div class="message">
-                <?php if (isset($result['error'])): ?>
-                    <p class="error"><?php echo $result['error']; ?></p>
-                <?php elseif (isset($result['success'])): ?>
-                    <p class="success"><?php echo $result['success']; ?></p>
-                <?php endif; ?>
-            </div>
         </section>
     </section>
+
+    <?php if (isset($_SESSION['username'])): ?>
+        <p class="success">Bonjour <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
+    <?php endif; ?>
 </body>
 
 </html>
