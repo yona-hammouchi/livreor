@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+h1{
+    font-size: 35px;
+    padding-left: 40px;
+    font-family: "Great Vibes", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    
+}
+
+body{
+        font-family: "Playfair", serif;
+        font-size: large;
+        font-weight: 600 ;
+}
+
+.pageProfil{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.item{
+    display: flex;
+    gap: 2em;
+    background-color: #F2E5ED40;
+    padding: 50px;
+    
+}
+
+input{
+    height: 40px;
+    width: 180px;
+    text-align: center;
+    border-radius: 5px ;
+    border: 2px white;
+}
+
+
+

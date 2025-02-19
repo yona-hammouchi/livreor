@@ -1,5 +1,9 @@
 <?php
 require_once '../includes/navbar.php';
+<<<<<<< HEAD
+=======
+require_once '../includes/footer.php';
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 require_once '../class/Database.php';
 session_start();
 if (!isset($_SESSION)) {
@@ -14,6 +18,10 @@ require_once '../class/Database.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="../styles/style_footer.css">
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
     <title>admin</title>
 </head>
 

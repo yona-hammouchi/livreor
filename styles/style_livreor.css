@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+.container_hea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Dancing Script", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container form {
+    text-align: center;
+}
+
+.container input {
+    width: 200px;
+}
+
+table {
+    font-family: "Dancing Script", serif;
+    font-size: 1.3rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 60px;
+}
+
+th {
+    background-color: #f9c0e1;
+    border-radius: 54px;
+}
+
+td {
+    text-align: center;
+    padding: 10px 0;
+}
+
+#dd,
+#nn {
+    width: 200px;
+}
+
+.nice_btn {
+    padding: 12px 32px;
+    border-radius: 54px;
+    border: 2px solid #f9c0e1;
+    background-color: white;
+    cursor: pointer;
+}
+
+.search_form {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper_search {
+    background-color: #f9c0e1;
+    padding: 10px 30px;
+    border-radius: 54px;
+
+    width: 300px;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.wrapper_search button {
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    width: 15%;
+}
+
+.wrapper_search button img {
+    width: 80%;
+}
+
+.wrapper_search input {
+    width: 90%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
