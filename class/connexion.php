@@ -31,9 +31,13 @@ class Connexion extends Database
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['role'] = $user['role']; // Si tu as un rôle dans ta table users
 
-                    // Rediriger vers la page de profil
-                    header('Location: profil.php');
-                    exit; // Arrêter l'exécution du script après la redirection
+                    if ($user['role'] === 'admin') {
+                        header("Location: admin_dashboard.php");
+                    } elseif ($user['role'] === 'user') {
+                        header("Location: profil.php");
+                    } else {
+                        return ['error' => "Rôle inconnu. Contactez l'administrateur."];
+                    }
                 } else {
                     return ['error' => "Mot de passe incorrect."];
                 }
