@@ -28,10 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/styleConnexion.css">
+    <link rel="stylesheet" href="../styles/styleNavbar.css">
     <link rel="stylesheet" href="../styles/styleConnexion.css">
     <link rel="stylesheet" href="../styles/styleNavbar.css">
     <title>Inscription</title>
@@ -46,10 +49,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="password" required><br><br>
+    <section class="containers_head_forms">
+        <section class="container_forms">
+            <p>Inscrivez-vous et partagez un message pour célébrer ce moment spécial.</p>
+            <form action="inscription.php" method="POST">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required><br><br>
 
                 <button type="submit">S'inscrire</button>
             </form>
+                <button type="submit">S'inscrire</button>
+            </form>
 
+            <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+            <?php endif; ?>
+        </section>
+    </section>
             <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
             <?php endif; ?>
         </section>

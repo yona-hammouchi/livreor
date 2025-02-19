@@ -1,6 +1,8 @@
 <?php
 class Connexion extends Database
 {
+class Connexion extends Database
+{
     public function handleLogin($postData)
     {
         // Démarrer la session
