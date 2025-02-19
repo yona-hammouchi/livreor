@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="./styles/styleNavbar.css">
     <link rel="stylesheet" href="./styles/style_index.css">
     <title>Livre d'Or</title>
 </head>
@@ -80,6 +80,10 @@
     </div>
 
 </section>
+    <span>
+        <h1> N'hésitez pas à nous laissez un petit message sur le livre d'or </h1>
+    <span>
+    <a href="./pages/inscription.php"><img class = "register_button"src="./assets/button_register.png" alt="img"></a>
 </main>
 <footer>
 </footer>

@@ -1,9 +1,14 @@
 <?php
 session_start();
 
+// Définir $role avant de l'utiliser
+$role = $_POST['role'] ?? $_SESSION['role'] ?? 'user'; // Valeur par défaut 'user'
+
+// Vérifier les autorisations
 if ($role === 'admin' && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
     return ['error' => "Vous n'avez pas l'autorisation de créer un administrateur."];
 }
+
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
 require_once '../class/Inscription.php';
