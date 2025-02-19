@@ -16,9 +16,13 @@ main {
     gap: 2em;
 }
 
+<<<<<<< HEAD
 
 
 .homepage {
+=======
+.homepage{
+>>>>>>> 37737de9ff18cb7826374907c4e5715d10b4273b
     display: flex;
     justify-content: center;
     align-items: center;

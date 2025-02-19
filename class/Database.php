@@ -11,6 +11,16 @@ class Database
     {
         try {
             $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->username, $this->password);
+    private $host = 'localhost';
+    private $dbname = 'livreor';
+    private $username = 'root';
+    private $password = 'root';
+    protected $pdo;
+
+    public function __construct()
+    {
+        try {
+            $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->username, $this->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die('Une erreur est survenue : ' . $e->getMessage());
