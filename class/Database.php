@@ -1,43 +1,59 @@
 <?php
-$host = 'localhost';
-$dbname = 'livreor';
-$username = 'root';
-$password = 'root';
-
 class Database
 {
-    private $host;
-    private $dbname;
-    private $username;
-    private $password;
-    private $pdo;
+    private $host = 'localhost';
+    private $dbname = 'livreor';
+    private $username = 'root';
+    private $password = 'root';
+    protected $pdo;
 
-    public function __construct($host, $dbname, $username, $password)
+    public function __construct()
     {
-        $this->host = $host;
-        $this->dbname = $dbname;
-        $this->username = $username;
-        $this->password = $password;
-
         try {
-            // Créer une connexion avec la base "mysql" pour la création de la base
-            $this->pdo = new PDO("mysql:host={$this->host}", $this->username, $this->password);
+            $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->username, $this->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            // Vérifier si la base existe, sinon la créer
-            $this->pdo->exec("CREATE DATABASE IF NOT EXISTS {$this->dbname}");
-            echo "Base de données créée ou déjà existante.<br>";
-
-            // Se connecter à la base nouvellement créée
-            $this->pdo = new PDO("mysql:host={$this->host};dbname={$this->dbname};charset=utf8", $this->username, $this->password);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            echo 'Connexion réussie à la base de données!<br>';
         } catch (PDOException $e) {
-            echo 'Une erreur est survenue : ' . $e->getMessage();
+            die('Une erreur est survenue : ' . $e->getMessage());
         }
     }
 
+    /**
+     * Méthode pour préparer une requête SQL.
+     *
+     * @param string $sql La requête SQL à préparer.
+     * @return PDOStatement
+     */
+    public function prepare($sql)
+    {
+        return $this->pdo->prepare($sql);
+    }
+
+    /**
+     * Crée un administrateur par défaut si aucun administrateur n'existe.
+     */
+    public function createDefaultAdmin()
+    {
+        $adminUsername = 'admin';
+        $adminPassword = 'admin123';
+        $hashedPassword = password_hash($adminPassword, PASSWORD_DEFAULT);
+
+        $query = $this->pdo->prepare("SELECT * FROM users WHERE username = :username AND role = 'admin'");
+        $query->bindParam(':username', $adminUsername);
+        $query->execute();
+
+        if ($query->rowCount() == 0) {
+            $stmt = $this->pdo->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, 'admin')");
+            $stmt->bindParam(':username', $adminUsername);
+            $stmt->bindParam(':password', $hashedPassword);
+            $stmt->execute();
+        }
+    }
+
+    /**
+     * Retourne l'instance PDO.
+     *
+     * @return PDO
+     */
     public function getPDO()
     {
         return $this->pdo;
