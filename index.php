@@ -99,6 +99,7 @@
                 <h3>Liens rapides</h3>
                 <ul>
                     <li><a href="./pages/livre-or.php">Livre d'or</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section contact">
