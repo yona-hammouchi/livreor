@@ -10,7 +10,7 @@ require_once '../class/MessageManager.php';
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
->>>>>>> 1719a6a44fdda4391b8247ca561f00cd2ed130e6
+
 }
 
 // Instancier les classes
@@ -73,9 +73,6 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
 </head>
 
 <body>
-<<<<<<< HEAD
-    <h1>Bienvenue sur votre profil, <?php echo "Bienvenue sur votre profil, " . $_SESSION['username'] . " !"; ?></h1>
-=======
     <section class="pageProfil">
         <h1>Bienvenue sur votre profil, <?php echo htmlspecialchars($_SESSION['username']); ?> !</h1>
         <p>Merci à tous pour vos mots et vos pensées qui viendront enrichir ce joli moment.</p>
@@ -86,7 +83,6 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
                 <label>Nom d'utilisateur :</label>
                 <input type="text" name="username" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" required>
             </div>
->>>>>>> 1719a6a44fdda4391b8247ca561f00cd2ed130e6
 
             <div class="item">
                 <label>Nouveau mot de passe :</label>
@@ -99,11 +95,6 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
         <!-- Bouton de déconnexion -->
         <a href="deconnexion.php">Se déconnecter</a>
 
-<<<<<<< HEAD
-    <form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
-        <button type="submit" name="delete" style="background-color: red; color: white;">Supprimer mon compte</button>
-    </form>
-=======
         <!-- Bouton de suppression de compte -->
         <form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
             <button type="submit" name="delete" style="background-color: red; color: white;">Supprimer mon compte</button>
@@ -155,7 +146,6 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
             <button type="submit">Poster</button>
         </form>
     </section>
->>>>>>> 1719a6a44fdda4391b8247ca561f00cd2ed130e6
 </body>
 
 </html>
