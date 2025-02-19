@@ -108,16 +108,26 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
                     <small>Posté le <?= date('d/m/Y H:i', strtotime($message['date_comment'])) ?></small>
 
                     <!-- Formulaire pour modifier un message -->
-                    <form method="POST" style="display:inline;">
-                        <input type="hidden" name="message_id" value="<?= $message['id'] ?>">
-                        <textarea name="new_message" placeholder="Modifier votre message..." required><?= htmlspecialchars($message['comment']) ?></textarea>
-                        <button type="submit" name="update_message">Modifier</button>
-                    </form>
+                <form method="POST" style="display:inline;">
+                    <div class="styleform">
+                            <div>
+                                <input type="hidden" name="message_id" value="<?= $message['id'] ?>">
+                            </div>
+                            <div>
+                                <textarea name="new_message" placeholder="Modifier votre message..." required><?= htmlspecialchars($message['comment']) ?></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" name="update_message">Modifier</button>
+                            
+                    
+                </form>
 
                     <!-- Formulaire pour supprimer un message -->
                     <form method="POST" style="display:inline;">
                         <input type="hidden" name="message_id" value="<?= $message['id'] ?>">
                         <button type="submit" name="delete_message" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">Supprimer</button>
+                    </div>
+                    </div>
                     </form>
                 </div>
             <?php endforeach; ?>
@@ -132,7 +142,6 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
         <?php if (isset($error_message)) : ?>
             <p class="error"><?= htmlspecialchars($error_message) ?></p>
         <?php endif; ?>
-    </section>
 
         <!-- Formulaire d'ajout de commentaire -->
         <h2>Ajouter un commentaire</h2>
