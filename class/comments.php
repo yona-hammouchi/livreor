@@ -99,5 +99,16 @@ public function getTotalSearchComments($keyword)
 
     return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
 }
+
+public function getUserMessages($user_id)
+{
+    $query = "SELECT * FROM comments WHERE user_id = :user_id ORDER BY date_comment DESC";
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }
 
