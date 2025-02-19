@@ -35,37 +35,45 @@ $totalPages = ceil($totalComments / $perPage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livre d'Or</title>
     <link rel="stylesheet" href="../styles/style_livreor.css">
+    <link rel="stylesheet" href="../styles/style_footer.css">
 
 </head>
 
 <body>
     <header>
-        <h1>Livre d'Or</h1>
-        <a href="profil.php">Retour au profil</a>
+        <div class="container_hea">
+            <h1>Livre d'Or</h1>
+            <a href="profil.php">Retour au profil</a>
+        </div>
     </header>
 
     <section class="container">
         <!-- Barre de recherche -->
-        <form action="livre-or.php" method="GET" class="search-form">
-            <input type="text" name="search" placeholder="Rechercher un commentaire..." value="<?= htmlspecialchars($keyword) ?>">
-            <button type="submit">Rechercher</button>
+        <form action="livre-or.php" method="GET" class="search_form">
+            <div class="wrapper_search">
+                <input type="text" name="search" placeholder="Rechercher un commentaire..." value="<?= htmlspecialchars($keyword) ?>">
+                <button type="submit">
+                    <img src="../assets/icons/chercher.png" alt="">
+                </button>
+            </div>
+
         </form>
 
         <!-- Tableau des commentaires -->
         <table>
             <thead>
                 <tr>
-                    <th>Nom d'utilisateur</th>
+                    <th id="dd">Date</th>
+                    <th id="nn">Nom d'utilisateur</th>
                     <th>Commentaire</th>
-                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($comments as $com) : ?>
                     <tr>
+                        <td><?= date('d/m/Y H:i', strtotime($com['date_comment'])) ?></td>
                         <td><?= htmlspecialchars($com['username']) ?></td>
                         <td><?= htmlspecialchars($com['comment']) ?></td>
-                        <td><?= date('d/m/Y H:i', strtotime($com['date_comment'])) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -86,6 +94,7 @@ $totalPages = ceil($totalComments / $perPage);
             <?php endif; ?>
         </div>
     </section>
+    <?php require_once '../includes/footer.php'; ?>
 </body>
 
 </html>

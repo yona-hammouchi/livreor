@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/navbar.php';
+require_once '../includes/footer.php';
 require_once '../class/Database.php';
 session_start();
 if (!isset($_SESSION)) {
@@ -14,6 +15,7 @@ require_once '../class/Database.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style_footer.css">
     <title>admin</title>
 </head>
 

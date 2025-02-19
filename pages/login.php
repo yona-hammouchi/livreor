@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleNavbar.css">
     <link rel="stylesheet" href="../styles/styleConnexion.css">
+    <link rel="stylesheet" href="../styles/style_footer.css">
     <title>Connexion</title>
 </head>
 
@@ -55,11 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </section>
     </section>
-
-    <!-- Afficher un message de bienvenue si l'utilisateur est connecté -->
     <?php if (isset($_SESSION['username'])): ?>
         <p class="success">Bonjour <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
     <?php endif; ?>
+    <?php require_once '../includes/footer.php'; ?>
 </body>
 
 </html>

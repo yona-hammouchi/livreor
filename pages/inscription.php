@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleConnexion.css">
     <link rel="stylesheet" href="../styles/styleNavbar.css">
+    <link rel="stylesheet" href="../styles/style_footer.css">
     <title>Inscription</title>
 </head>
 
@@ -49,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <button type="submit">S'inscrire</button>
             </form>
-
             <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
             <?php endif; ?>
         </section>
     </section>
+    <?php require_once '../includes/footer.php'; ?>
 </body>
 
 </html>
