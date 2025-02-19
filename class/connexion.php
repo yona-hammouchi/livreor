@@ -1,108 +1,48 @@
 <?php
-
-class Inscription
+class Connexion extends Database
 {
-    private $pdo;
-
-    public function __construct($host, $dbname, $username, $password)
-    {
-        try {
-            $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Erreur : Impossible de se connecter à la base de données. " . $e->getMessage());
-        }
-    }
-
-    public function handleInscription($postData)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = htmlspecialchars($postData['username']);
-            $password = $postData['password'];
-
-            $error = $this->validateInputs($username, $password); // Modifié pour passer 2 paramètres seulement
-            if ($error) {
-                return ['error' => $error];
-            }
-
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            try {
-                $this->registerUser($username, $hashed_password);
-
-                // Redirection après une inscription réussie
-                header("Location: ../pages/login.php");
-                exit; // Stop l'exécution après redirection
-            } catch (PDOException $e) {
-                if ($e->getCode() === '23000') {
-                    return ['error' => "Le nom d'utilisateur existe déjà."];
-                } else {
-                    return ['error' => "Erreur lors de l'inscription : " . $e->getMessage()];
-                }
-            }
-        }
-    }
-
-    // Méthode validateInputs corrigée pour ne vérifier que le username et le password
-    private function validateInputs($username, $password)
-    {
-        if (empty($username) || empty($password)) {
-            return "Tous les champs sont obligatoires.";
-        }
-
-        return null;
-    }
-
-    private function registerUser($username, $hashed_password)
-    {
-        $stmt = $this->pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-        $stmt->execute([
-            ':username' => $username,
-            ':password' => $hashed_password
-        ]);
-    }
-}
-
-
-
-class Login
-{
-    private $pdo;
-
-    public function __construct($host, $dbname, $username, $password)
-    {
-        try {
-            $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Erreur : Impossible de se connecter à la base de données. " . $e->getMessage());
-        }
-    }
-
     public function handleLogin($postData)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = htmlspecialchars($postData['email']);
-            $password = $postData['password'];
+        // Démarrer la session
+        session_start();
 
-            if (empty($email) || empty($password)) {
-                return ['error' => "Tous les champs sont obligatoires."];
-            }
+        // Nettoyer les données du formulaire
+        $username = trim($postData['username']);
+        $password = trim($postData['password']);
 
-            try {
-                $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-                $stmt->execute([':email' => $email]);
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Vérifier que les champs sont remplis
+        if (empty($username) || empty($password)) {
+            return ['error' => "Tous les champs sont obligatoires."];
+        }
 
-                if ($user && password_verify($password, $user['password'])) {
-                    // Connexion réussie
-                    return ['success' => "Connexion réussie !"];
+        try {
+            // Vérifier si l'utilisateur existe
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                // Vérifier le mot de passe
+                if (password_verify($password, $user['password'])) {
+                    // Stocker les informations de l'utilisateur dans la session
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['role'] = $user['role']; // Si tu as un rôle dans ta table users
+
+                    // Rediriger vers la page de profil
+                    header('Location: profil.php');
+                    exit; // Arrêter l'exécution du script après la redirection
                 } else {
-                    return ['error' => "Email ou mot de passe incorrect."];
+                    return ['error' => "Mot de passe incorrect."];
                 }
-            } catch (PDOException $e) {
-                return ['error' => "Erreur lors de la connexion : " . $e->getMessage()];
+            } else {
+                return ['error' => "Nom d'utilisateur introuvable."];
             }
+        } catch (PDOException $e) {
+            // Gérer les erreurs de base de données
+            return ['error' => "Une erreur s'est produite lors de la connexion. Veuillez réessayer."];
         }
     }
 }
