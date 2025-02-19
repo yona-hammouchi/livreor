@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-body{
+body {
     font-family: "Playfair", serif;
     font-size: large;
-    font-weight: 600 ;
+    font-weight: 600;
 }
 
-main{
+main {
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -16,57 +16,60 @@ main{
 
 
 
-.homepage{
+.homepage {
     display: flex;
     justify-content: center;
     gap: 2em;
 }
 
-.paragraphe{
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    text-align: justify;
-    line-height: 35px;
-    
+.homepage img {
+    width: 700%;
+    height: 600px;
 }
 
-.paragraphe h1{
+.paragraphe {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    line-height: 40px;
+}
+
+.paragraphe h1 {
     text-align: center;
-    border-top: solid 2px;
-    border-bottom: solid 2px;   
+    border-top: solid 1px;
+    border-bottom: solid 1px;
     font-size: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.paragraphe p{
+.paragraphe p {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.middlepage span{
+.middlepage span {
     text-align: center;
 }
 
-.grid img{
+.grid img {
     width: 100%;
 }
 
-.gallery{
+.gallery {
     column-count: 3;
     gap: 5px;
     padding-top: 50px;
 }
 
-.middlepage{
+.middlepage {
     padding-top: 100px;
 }
 
-span{
+span {
     text-align: center;
 }
 
-.register_button img{
-    align-self:center;
+.register_button img {
+    align-self: center;
 }
