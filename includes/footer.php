@@ -4,15 +4,13 @@
             <h3>À propos</h3>
             <p>
                 Bienvenue dans le livre d'or de Billy, où chaque mot doux illumine nos cœurs.
-                Merci de partager vos pensées, vos vœux et vos souvenirs précieux. 💖
+                Merci de partager vos pensées, vos vœux et vos souvenirs précieux.
             </p>
         </div>
         <div class="footer-section links">
             <h3>Liens rapides</h3>
             <ul>
-                <li><a href="#gallery">Galerie</a></li>
-                <li><a href="#comments">Commentaires</a></li>
-                <li><a href="#story">Notre Histoire</a></li>
+                <li><a href="../pages/livre-or.php">Livre d'or</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
