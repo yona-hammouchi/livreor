@@ -1,97 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-body{
+body {
     font-family: "Playfair", serif;
     font-size: large;
-    font-weight: 600 ;
+    font-weight: 600;
 }
 
-main{
+main {
     padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 2em;
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
 }
 
-.logo a{
+.logo a {
     text-decoration: none;
     color: black;
 }
-nav h1{
+
+nav h1 {
     font-size: 45px;
     padding-left: 40px;
     font-family: "Great Vibes", serif;
     font-weight: 400;
     font-style: normal;
-    
+
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: black;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style-type: none;
-    
+
     gap: 20px;
     padding-right: 10px;
 }
 
-.homepage{
+.homepage {
     display: flex;
     justify-content: center;
     gap: 2em;
 }
 
-.paragraphe{
+.paragraphe {
     display: flex;
     flex-direction: column;
     gap: 2em;
     text-align: justify;
     line-height: 35px;
-    
+
 }
 
-.paragraphe h1{
+.paragraphe h1 {
     text-align: center;
     border-top: solid 2px;
-    border-bottom: solid 2px;   
+    border-bottom: solid 2px;
     font-size: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.paragraphe p{
+.paragraphe p {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.middlepage span{
+.middlepage span {
     text-align: center;
 }
 
-.grid img{
+.grid img {
     width: 100%;
 }
 
-.gallery{
+.gallery {
     column-count: 3;
     gap: 5px;
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
-.middlepage{
+.middlepage {
     padding-top: 100px;
 }
 
+.container_button_book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container_button_book a {
+    text-decoration: none;
+}
+
+.container_button_book p {
+    font-size: 1.2rem;
+    color: #333;
+    font-size: 30px;
+}
+
+.container_button_book button {
+    background-color: #ADD8E6;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container_button_book button:hover {
+    background-color: #87CEEB;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container_button_book button:active {
+    transform: scale(0.95);
+}

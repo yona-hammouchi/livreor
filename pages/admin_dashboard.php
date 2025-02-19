@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION)) {
     die("Les sessions ne fonctionnent pas !");
 }
-require_once '../class/Database.php';
 
 ?>
 <!DOCTYPE html>
@@ -19,10 +18,10 @@ require_once '../class/Database.php';
 
 <body>
     <h1><?php echo "Bienvenue, " . $_SESSION['username'] . " ! "; ?></h1>
-    <h2>Informations Personnelle</h2>
-
     <section class="containers_dash">
+
         <section class="containers_inform">
+            <h2>Informations Personnelle</h2>
             <form method="POST">
                 <label>Nom d'utilisateur :</label>
                 <input type="text" name="username" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" required>
@@ -37,12 +36,14 @@ require_once '../class/Database.php';
             </form>
         </section>
 
+    </section class="containers_users">
+    <h2>Liste des utilisateurs</h2>
 
     </section class="containers_comments">
     <h2>Historiques des commentaires</h2>
     </section>
-    </section>
-    </section>
+
+
 </body>
 
 </html>
