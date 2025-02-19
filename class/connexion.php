@@ -23,6 +23,26 @@ class Connexion extends Database
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+<<<<<<< HEAD
+        if ($user) {
+            // Vérification du mot de passe
+            if (password_verify($password, $user['password'])) {
+                // Démarrer une session et stocker les informations de l'utilisateur
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
+
+                // Redirection selon le rôle
+                if ($user['role'] === 'admin') {
+                    header("Location: admin_dashboard.php");
+                } elseif ($user['role'] === 'user') {
+                    header("Location: profil.php");
+                } else {
+                    return ['error' => "Rôle inconnu. Contactez l'administrateur."];
+                }
+                exit();
+=======
             if ($user) {
                 // Vérifier le mot de passe
                 if (password_verify($password, $user['password'])) {
@@ -37,6 +57,7 @@ class Connexion extends Database
                 } else {
                     return ['error' => "Mot de passe incorrect."];
                 }
+>>>>>>> 1719a6a44fdda4391b8247ca561f00cd2ed130e6
             } else {
                 return ['error' => "Nom d'utilisateur introuvable."];
             }
