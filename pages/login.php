@@ -2,8 +2,7 @@
 session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/Connexion.php';
-
+require_once '../class/Users.php'; // Inclure la classe Connexion
 
 $db = new Database();
 $connexion = new Connexion($db);

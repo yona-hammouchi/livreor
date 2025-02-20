@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../class/Database.php';
-require_once '../class/comments.php';
+require_once '../class/Comments.php';
 
 // Instancier les classes
 $database = new Database();

@@ -9,7 +9,7 @@ if ($role === 'admin' && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'ad
 
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/Inscription.php';
+require_once '../class/Users.php';
 
 $inscription = new Inscription();
 $result = null;
