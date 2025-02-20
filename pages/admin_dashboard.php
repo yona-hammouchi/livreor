@@ -1,7 +1,7 @@
 <?php
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/AdminDashboard.php';
+require_once '../class/Comments.php';
 session_start();
 
 // Vérifie que l'utilisateur est connecté et a les droits d'administrateur

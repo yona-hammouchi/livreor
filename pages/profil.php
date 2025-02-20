@@ -2,8 +2,8 @@
 session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/comments.php';
-require_once '../class/MessageManager.php';
+require_once '../class/Comments.php';
+
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
