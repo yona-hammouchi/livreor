@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-header{
+
+header {
     font-family: "Playfair", serif;
     font-size: large;
-    font-weight: 600 ;
+    font-weight: 600;
 }
-
 
 nav ul li a:hover {
     color: #f1a7c9;
     transform: translateY(-5px);
-
 }
-
 
 nav ul li a::after {
     content: '';
@@ -32,39 +30,41 @@ nav ul li a:hover::after {
     left: 0;
 }
 
-nav ul li a{
+nav ul li a {
     transition: color 0.3s ease, transform 0.3s ease;
 }
-nav{
+
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
 }
 
-.logo a{
+.logo a {
     text-decoration: none;
     color: black;
 }
-nav h1{
+
+nav h1 {
     font-size: 45px;
     padding-left: 40px;
     font-family: "Great Vibes", serif;
     font-weight: 400;
     font-style: normal;
-    
+
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: black;
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style-type: none;
-    
+
     gap: 20px;
     padding-right: 10px;
 }

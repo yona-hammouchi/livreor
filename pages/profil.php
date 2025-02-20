@@ -5,13 +5,13 @@ require_once '../class/Database.php';
 require_once '../class/Comments.php';
 
 
-// Vérifier si l'utilisateur est connecté
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Instancier les classes
+
 $database = new Database();
 $comment = new Comment($database);
 $messageManager = new MessageManager($database);
@@ -90,15 +90,15 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
             <button type="submit" name="update">Mettre à jour</button>
         </form>
 
-        <!-- Bouton de déconnexion -->
+
         <a href="deconnexion.php">Se déconnecter</a>
 
-        <!-- Bouton de suppression de compte -->
+
         <form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
             <button type="submit" name="delete" style="background-color: red; color: white;">Supprimer mon compte</button>
         </form>
 
-        
+
         <!-- Afficher les messages de l'utilisateur -->
         <?php if (!empty($messages)) : ?>
             <h2>Vos messages</h2>
@@ -122,7 +122,7 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
                     
                 </form>
 
-                    <!-- Formulaire pour supprimer un message -->
+
                     <form method="POST" style="display:inline;">
                         <input type="hidden" name="message_id" value="<?= $message['id'] ?>">
                         <button type="submit" name="delete_message" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">Supprimer</button>
@@ -143,15 +143,15 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
             <p class="error"><?= htmlspecialchars($error_message) ?></p>
         <?php endif; ?>
 
-        <!-- Formulaire d'ajout de commentaire -->
-        <h2>Ajouter un commentaire</h2>
-        <?php if (isset($error_message)) : ?>
-            <p style="color: red;"><?= htmlspecialchars($error_message) ?></p>
-        <?php endif; ?>
-        <form method="POST">
-            <textarea name="comment" required></textarea>
-            <button type="submit">Poster</button>
-        </form>
+    <!-- Formulaire d'ajout de commentaire -->
+    <h2>Ajouter un commentaire</h2>
+    <?php if (isset($error_message)) : ?>
+        <p style="color: red;"><?= htmlspecialchars($error_message) ?></p>
+    <?php endif; ?>
+    <form method="POST">
+        <textarea name="comment" required></textarea>
+        <button type="submit">Poster</button>
+    </form>
     </section>
 </body>
 

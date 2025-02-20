@@ -1,88 +1,91 @@
-/* styles/styleLivreOr.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+.container_hea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Dancing Script", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+.container form {
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-}
-
-header a {
-    color: white;
-    text-decoration: none;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.search-form {
-    margin-bottom: 20px;
-}
-
-.search-form input {
-    padding: 10px;
-    width: calc(100% - 120px);
-    margin-right: 10px;
-}
-
-.search-form button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
+.container input {
+    width: 200px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    font-family: "Dancing Script", serif;
+    font-size: 1.3rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 60px;
 }
 
-table th, table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
+th {
+    background-color: #f9c0e1;
+    border-radius: 54px;
 }
 
-table th {
-    background-color: #333;
-    color: white;
-}
-
-.pagination {
+td {
     text-align: center;
+    padding: 10px 0;
 }
 
-.pagination a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 4px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
+#dd,
+#nn {
+    width: 200px;
 }
 
-.pagination a.active {
-    background-color: #555;
+.nice_btn {
+    padding: 12px 32px;
+    border-radius: 54px;
+    border: 2px solid #f9c0e1;
+    background-color: white;
+    cursor: pointer;
 }
 
-.pagination a:hover {
-    background-color: #555;
+.search_form {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper_search {
+    background-color: #f9c0e1;
+    padding: 10px 30px;
+    border-radius: 54px;
+
+    width: 300px;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.wrapper_search button {
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    width: 15%;
+}
+
+.wrapper_search button img {
+    width: 80%;
+}
+
+.wrapper_search input {
+    width: 90%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
 }

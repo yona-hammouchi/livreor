@@ -8,13 +8,6 @@ class Comment
         $this->db = $db;
     }
 
-    /**
-     * Ajoute un commentaire à la base de données.
-     *
-     * @param int $user_id L'ID de l'utilisateur.
-     * @param string $comment Le commentaire à ajouter.
-     * @return bool Retourne true si le commentaire a été ajouté avec succès.
-     */
     public function addComment($user_id, $comment)
     {
         if (empty($user_id) || empty($comment)) {
@@ -29,13 +22,6 @@ class Comment
         return $stmt->execute();
     }
 
-    /**
-     * Récupère tous les commentaires avec pagination.
-     *
-     * @param int $page Le numéro de la page.
-     * @param int $perPage Le nombre de commentaires par page.
-     * @return array Retourne un tableau de commentaires.
-     */
     public function getComments($page = 1, $perPage = 10)
     {
         $offset = ($page - 1) * $perPage;
@@ -53,11 +39,6 @@ class Comment
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Récupère le nombre total de commentaires.
-     *
-     * @return int Retourne le nombre total de commentaires.
-     */
     public function getTotalComments()
     {
         $query = "SELECT COUNT(*) as total FROM comments";
@@ -68,46 +49,45 @@ class Comment
     }
 
     public function searchComments($keyword, $page = 1, $perPage = 10)
-{
-    $offset = ($page - 1) * $perPage;
+    {
+        $offset = ($page - 1) * $perPage;
 
-    $query = "SELECT comments.*, users.username 
+        $query = "SELECT comments.*, users.username 
               FROM comments 
               JOIN users ON comments.user_id = users.id 
               WHERE comment LIKE :keyword 
               ORDER BY date_comment DESC 
               LIMIT :limit OFFSET :offset";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
-    $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
+        $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-public function getTotalSearchComments($keyword)
-{
-    $query = "SELECT COUNT(*) as total 
+    public function getTotalSearchComments($keyword)
+    {
+        $query = "SELECT COUNT(*) as total 
               FROM comments 
               WHERE comment LIKE :keyword";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
-    $stmt->execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
+        $stmt->execute();
 
-    return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-}
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
 
-public function getUserMessages($user_id)
-{
-    $query = "SELECT * FROM comments WHERE user_id = :user_id ORDER BY date_comment DESC";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
+    public function getUserMessages($user_id)
+    {
+        $query = "SELECT * FROM comments WHERE user_id = :user_id ORDER BY date_comment DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 require_once 'Database.php';
@@ -118,13 +98,13 @@ class AdminDashboard
 
     public function __construct()
     {
-        $this->db = new Database(); 
+        $this->db = new Database();
     }
 
-   
+
     public function getComments($page = 1, $search = "")
     {
-        $limit = 10;  
+        $limit = 10;
         $offset = ($page - 1) * $limit;
 
         $sql = "SELECT * FROM comments WHERE comment LIKE :search LIMIT :limit OFFSET :offset";
@@ -137,7 +117,7 @@ class AdminDashboard
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-   
+
     public function getTotalCommentsCount($search = "")
     {
         $sql = "SELECT COUNT(*) FROM comments WHERE comment LIKE :search";
@@ -148,7 +128,7 @@ class AdminDashboard
         return $stmt->fetchColumn();
     }
 
-   
+
     public function deleteComment($id)
     {
         $sql = "DELETE FROM comments WHERE id = :id";
@@ -186,7 +166,7 @@ class MessageManager
         $message = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$message || $message['user_id'] !== $user_id) {
-            return false; 
+            return false;
         }
 
         // Mettre à jour le message
@@ -227,6 +207,3 @@ class MessageManager
         return $stmt->execute();
     }
 }
-
-
-

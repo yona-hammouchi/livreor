@@ -14,60 +14,74 @@ main {
     gap: 2em;
 }
 
-
-
 .homepage {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 2em;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .homepage img {
-    width: 700%;
-    height: 600px;
+    width: 60%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .paragraphe {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    max-width: 60%;
     text-align: justify;
-    line-height: 40px;
+    line-height: 2.1;
 }
 
 .paragraphe h1 {
     text-align: center;
-    border-top: solid 1px;
-    border-bottom: solid 1px;
-    font-size: 60px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    border-top: solid 2px #0c173e;
+    border-bottom: solid 2px #0c173e;
+    font-size: 2em;
+    padding: 10px 0;
 }
 
 .paragraphe p {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0;
+    margin-top: 20px;
 }
 
-.middlepage span {
-    text-align: center;
+
+.layout_containers {
+    width: min(1500px, 100%);
+    margin: 0 auto;
+    columns: 4;
+    column-gap: 1.9em;
 }
 
-.grid img {
+.layout_containers img {
     width: 100%;
+    display: block;
+    margin-bottom: 1.9em;
+    border-radius: 10px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
 }
 
-.gallery {
-    column-count: 3;
-    gap: 5px;
-    padding-top: 50px;
-}
-
-.middlepage {
-    padding-top: 100px;
+.layout_containers img:hover {
+    transform: scale(1.1);
 }
 
 span {
     text-align: center;
+}
+
+span img {
+    width: 200px;
+    padding-top: 50px;
+    padding-bottom: 70px;
 }
 
 .register_button img {

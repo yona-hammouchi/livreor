@@ -42,20 +42,18 @@ class Connexion extends Database
 {
     public function handleLogin($postData)
     {
-        // Démarrer la session
+
         session_start();
 
-        // Nettoyer les données du formulaire
         $username = trim($postData['username']);
         $password = trim($postData['password']);
 
-        // Vérifier que les champs sont remplis
         if (empty($username) || empty($password)) {
             return ['error' => "Tous les champs sont obligatoires."];
         }
 
         try {
-            // Vérifier si l'utilisateur existe
+
             $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
             $stmt->bindParam(':username', $username);
             $stmt->execute();
@@ -63,12 +61,12 @@ class Connexion extends Database
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
-                // Vérifier le mot de passe
+
                 if (password_verify($password, $user['password'])) {
-                    // Stocker les informations de l'utilisateur dans la session
+
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['username'] = $user['username'];
-                    $_SESSION['role'] = $user['role']; // Si tu as un rôle dans ta table users
+                    $_SESSION['role'] = $user['role'];
 
                     if ($user['role'] === 'admin') {
                         header("Location: admin_dashboard.php");
@@ -84,7 +82,7 @@ class Connexion extends Database
                 return ['error' => "Nom d'utilisateur introuvable."];
             }
         } catch (PDOException $e) {
-            // Gérer les erreurs de base de données
+
             return ['error' => "Une erreur s'est produite lors de la connexion. Veuillez réessayer."];
         }
     }

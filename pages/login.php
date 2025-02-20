@@ -1,23 +1,20 @@
 <?php
-session_start(); // Démarrer la session
+session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
 require_once '../class/Users.php'; // Inclure la classe Connexion
 
-// Instancier la classe Database et Connexion
 $db = new Database();
 $connexion = new Connexion($db);
 
-// Gérer la soumission du formulaire
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $connexion->handleLogin($_POST);
 
-    // Afficher les erreurs ou rediriger
+
     if (isset($result['error'])) {
         $error_message = $result['error'];
     } else {
-        // Redirection vers profil.php est gérée dans handleLogin()
-        // Donc pas besoin de faire autre chose ici
     }
 }
 ?>
@@ -30,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleNavbar.css">
     <link rel="stylesheet" href="../styles/styleConnexion.css">
+    <link rel="stylesheet" href="../styles/style_footer.css">
     <title>Connexion</title>
 </head>
 
@@ -55,11 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </section>
     </section>
-
-    <!-- Afficher un message de bienvenue si l'utilisateur est connecté -->
     <?php if (isset($_SESSION['username'])): ?>
         <p class="success">Bonjour <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
     <?php endif; ?>
+    <?php require_once '../includes/footer.php'; ?>
 </body>
 
 </html>

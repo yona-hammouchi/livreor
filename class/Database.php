@@ -17,20 +17,11 @@ class Database
         }
     }
 
-    /**
-     * Méthode pour préparer une requête SQL.
-     *
-     * @param string $sql La requête SQL à préparer.
-     * @return PDOStatement
-     */
     public function prepare($sql)
     {
         return $this->pdo->prepare($sql);
     }
 
-    /**
-     * Crée un administrateur par défaut si aucun administrateur n'existe.
-     */
     public function createDefaultAdmin()
     {
         $adminUsername = 'admin';
@@ -49,11 +40,6 @@ class Database
         }
     }
 
-    /**
-     * Retourne l'instance PDO.
-     *
-     * @return PDO
-     */
     public function getPDO()
     {
         return $this->pdo;
