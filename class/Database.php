@@ -12,7 +12,6 @@ class Database
         try {
             $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->username, $this->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-<<<<<<< HEAD
             echo 'Connexion réussie à la base de données!<br>';
 
             $this->createDefaultAdmin();
@@ -37,10 +36,6 @@ class Database
             $stmt->bindParam(':password', $hashedPassword);
             $stmt->execute();
             echo "Administrateur par défaut créé.<br>";
-=======
-        } catch (PDOException $e) {
-            die('Une erreur est survenue : ' . $e->getMessage());
->>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
         }
     }
 
