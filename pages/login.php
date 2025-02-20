@@ -1,23 +1,21 @@
 <?php
-session_start(); // Démarrer la session
+session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
-require_once '../class/Connexion.php'; // Inclure la classe Connexion
+require_once '../class/Connexion.php';
 
-// Instancier la classe Database et Connexion
+
 $db = new Database();
 $connexion = new Connexion($db);
 
-// Gérer la soumission du formulaire
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $connexion->handleLogin($_POST);
 
-    // Afficher les erreurs ou rediriger
+
     if (isset($result['error'])) {
         $error_message = $result['error'];
     } else {
-        // Redirection vers profil.php est gérée dans handleLogin()
-        // Donc pas besoin de faire autre chose ici
     }
 }
 ?>
