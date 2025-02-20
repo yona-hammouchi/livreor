@@ -1,0 +1,88 @@
+.containers_head_forms {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_forms {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.container_forms h1 {
+    font-size: 2.5rem;
+    color: #6b4f47;
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+}
+
+/* Sous-titre introductif */
+.container_forms p {
+    font-size: 1.2rem;
+    color: #7f7f7f;
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Champs de saisie */
+form input,
+form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+/* Style du bouton */
+form button {
+    padding: 12px 20px;
+    background-color: #ffb6c1;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #ff8da3;
+}
+
+/* Style pour les messages de succès ou d'erreur */
+.message p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.error {
+    color: #ff4d4d;
+}
+
+.success {
+    color: #28a745;
+}
+
+/* Texte placeholder dans les champs */
+form input::placeholder,
+form textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}

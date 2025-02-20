@@ -1,33 +1,59 @@
 <?php
-require_once '../class/connexion.php';
-require_once '../class/Database.php'; ?>
+session_start();
+
+// Définir $role avant de l'utiliser
+$role = $_POST['role'] ?? $_SESSION['role'] ?? 'user'; // Valeur par défaut 'user'
+
+// Vérifier les autorisations
+if ($role === 'admin' && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
+    return ['error' => "Vous n'avez pas l'autorisation de créer un administrateur."];
+}
+
+require_once '../includes/navbar.php';
+require_once '../class/Database.php';
+require_once '../class/Users.php';
+
+$inscription = new Inscription();
+$result = null;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $result = $inscription->handleInscription($_POST);
+    if (isset($result['success'])) {
+        $_SESSION['username'] = $_POST['username'];
+        header("Location: " . $_SERVER['PHP_SELF'] . "?status=success");
+        exit;
+    }
+}
+?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/styleConnexion.css">
+    <link rel="stylesheet" href="../styles/styleNavbar.css">
     <title>Inscription</title>
 </head>
 
 <body>
-    <h1>Inscription</h1>
-    <form action="inscription.php" method="POST">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="username" required><br><br>
+    <section class="containers_head_forms">
+        <section class="container_forms">
+            <p>Inscrivez-vous et partagez un message pour célébrer ce moment spécial.</p>
+            <form action="inscription.php" method="POST">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required><br><br>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required><br><br>
+                <button type="submit">S'inscrire</button>
+            </form>
 
-        <button type="submit">S'inscrire</button>
-    </form>
-
-    <?php if (isset($result['error'])): ?>
-        <p style="color:red;"><?php echo $result['error']; ?></p>
-    <?php elseif (isset($result['success'])): ?>
-        <p style="color:green;"><?php echo $result['success']; ?></p>
-    <?php endif; ?>
+            <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+            <?php endif; ?>
+        </section>
+    </section>
 </body>
 
 </html>

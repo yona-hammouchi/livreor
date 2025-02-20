@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+header{
+    font-family: "Playfair", serif;
+    font-size: large;
+    font-weight: 600 ;
+}
+
+
+nav ul li a:hover {
+    color: #f1a7c9;
+    transform: translateY(-5px);
+
+}
+
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #f1a7c9;
+
+    bottom: -5px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+nav ul li a{
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.logo a{
+    text-decoration: none;
+    color: black;
+}
+nav h1{
+    font-size: 45px;
+    padding-left: 40px;
+    font-family: "Great Vibes", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    
+    gap: 20px;
+    padding-right: 10px;
+}
+
+
+/* Responsive : ajustement sur mobile */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
