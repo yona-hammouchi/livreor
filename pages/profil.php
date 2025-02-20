@@ -1,4 +1,12 @@
 <?php
+<<<<<<< HEAD
+require_once '../includes/navbar.php';
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
+    header("Location: profil.php");
+    exit();
+}
+=======
 session_start();
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
@@ -57,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $user_id = $_SESSION['user_id'];
 $messages = $comment->getUserMessages($user_id); // À implémenter dans la classe Comment
 
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +74,33 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="../styles/styleNavbar.css">
     <link rel="stylesheet" href="../styles/style_profil.css">
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
     <title>Profil</title>
 </head>
 
 <body>
+<<<<<<< HEAD
+    <h1>Bienvenue sur votre profil, <?php echo "Bienvenue sur votre profil, " . $_SESSION['username'] . " !"; ?></h1>
+
+    <form method="POST">
+        <label>Nom d'utilisateur :</label>
+        <input type="text" name="username" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" required>
+
+        <label>Nouveau mot de passe :</label>
+        <input type="password" name="password" placeholder="Entrer le nouveau mot de passe">
+        <button type="submit" name="update">Mettre à jour</button>
+
+    </form>
+    <a href="deconnexion.php">Se déconnecter</a>
+
+    <form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
+        <button type="submit" name="delete" style="background-color: red; color: white;">Supprimer mon compte</button>
+    </form>
+=======
     <section class="pageProfil">
         <h1>Bienvenue sur votre profil, <?php echo htmlspecialchars($_SESSION['username']); ?> !</h1>
         <p>Merci à tous pour vos mots et vos pensées qui viendront enrichir ce joli moment.</p>
@@ -144,6 +174,7 @@ $messages = $comment->getUserMessages($user_id); // À implémenter dans la clas
             <button type="submit">Poster</button>
         </form>
     </section>
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 </body>
 
 </html>

@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+<<<<<<< HEAD
+if ($role === 'admin' && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
+    return ['error' => "Vous n'avez pas l'autorisation de créer un administrateur."];
+}
+=======
 // Définir $role avant de l'utiliser
 $role = $_POST['role'] ?? $_SESSION['role'] ?? 'user'; // Valeur par défaut 'user'
 
@@ -9,6 +14,7 @@ if ($role === 'admin' && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'ad
     return ['error' => "Vous n'avez pas l'autorisation de créer un administrateur."];
 }
 
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 require_once '../includes/navbar.php';
 require_once '../class/Database.php';
 require_once '../class/Inscription.php';
@@ -34,7 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleConnexion.css">
     <link rel="stylesheet" href="../styles/styleNavbar.css">
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="../styles/style_footer.css">
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
     <title>Inscription</title>
 </head>
 
@@ -50,11 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <button type="submit">S'inscrire</button>
             </form>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
             <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
             <?php endif; ?>
         </section>
     </section>
+<<<<<<< HEAD
+=======
     <?php require_once '../includes/footer.php'; ?>
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 </body>
 
 </html>

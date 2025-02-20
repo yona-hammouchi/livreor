@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+.containers_head_forms {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 .container_forms {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
@@ -5,6 +16,15 @@
     padding: 30px;
     max-width: 500px;
     text-align: center;
+<<<<<<< HEAD
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.container_forms h1 {
+    font-size: 2.5rem;
+    color: #6b4f47;
+=======
     color: #333;
 }
 
@@ -16,23 +36,38 @@
 
 .container_forms h1 {
     font-size: 2.5rem;
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
     margin-bottom: 10px;
     font-family: 'Georgia', serif;
 }
 
+<<<<<<< HEAD
+/* Sous-titre introductif */
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 .container_forms p {
     font-size: 1.2rem;
     color: #7f7f7f;
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
+/* Formulaire */
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+<<<<<<< HEAD
+}
+
+/* Champs de saisie */
+=======
     padding: 30px;
 }
 
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 form input,
 form textarea {
     padding: 12px;
@@ -43,6 +78,10 @@ form textarea {
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
+/* Style du bouton */
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 form button {
     padding: 12px 20px;
     background-color: #ffb6c1;
@@ -58,6 +97,10 @@ form button:hover {
     background-color: #ff8da3;
 }
 
+<<<<<<< HEAD
+/* Style pour les messages de succès ou d'erreur */
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 .message p {
     text-align: center;
     margin-top: 20px;
@@ -70,4 +113,14 @@ form button:hover {
 
 .success {
     color: #28a745;
+<<<<<<< HEAD
+}
+
+/* Texte placeholder dans les champs */
+form input::placeholder,
+form textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+=======
+>>>>>>> 1f531733772bcfdca521951968afc3f6d0f9e18c
 }
